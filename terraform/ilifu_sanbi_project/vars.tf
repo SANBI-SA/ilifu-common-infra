@@ -12,3 +12,11 @@ variable "sentry_instance_image_id" {
   type = string
   default = "3820bbe8-a4ea-4807-ace2-51b7b912c7f7"
 }
+
+variable "cloudns_api_user" {
+    type = string
+}
+
+variable "cloudns_api_password" {
+    type = string
+}
