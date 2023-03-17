@@ -10,13 +10,25 @@ variable "sentry_instance_flavor" {
 
 variable "sentry_instance_image_id" {
   type = string
-  default = "3820bbe8-a4ea-4807-ace2-51b7b912c7f7"
+  default = "c01079b1-80b5-4e25-98c4-c29274ba8369"
 }
 
 variable "cloudns_api_user" {
     type = string
+    sensitive = true
 }
 
 variable "cloudns_api_password" {
     type = string
+    sensitive = true
+}
+
+variable "ilifu_infrastructure_private_key" {
+    type = string
+    sensitive = true
+}
+
+variable "gh_personal_access_token" {
+    type = string
+    sensitive = true
 }

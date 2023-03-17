@@ -1,0 +1,15 @@
+plugin: openstack.cloud.openstack
+expand_hostvars: no
+private: yes
+fail_on_errors: yes
+all_projects: no
+cache: no
+keyed_groups:
+  - key: openstack.metadata.ansible_group_name.split(',')
+    prefix: ''
+    separator: ''
+# compose:
+#   etcd_member_name: openstack.metadata.ansible_etcd_member_name
+#   ansible_host: openstack.accessIPv4
+# groups:
+#   k8s_cluster: "'kube' in openstack.metadata.ansible_group_name"
