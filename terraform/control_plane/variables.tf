@@ -6,12 +6,28 @@ variable "cloudns_api_password" {
     type = string
 }
 
-variable "control_node_image_id" {
+variable "k8s_controller_flavor_id" {
     type = string
-    default = "c01079b1-80b5-4e25-98c4-c29274ba8369"
 }
 
-variable "control_node_image_flavor" {
+variable "k8s_worker_flavor_id" {
     type = string
-    default = "eb1487f4-ff9d-4d50-b9c5-dd8c43e19e34"
+}
+
+variable "k8s_controller_image_id" {
+    type = string
+}
+
+variable "k8s_worker_image_id" {
+    type = string
+}
+
+variable "k8s_controller_count" {
+    type = number
+    default = 3
+}
+
+variable "k8s_worker_count" {
+    type = number
+    default = 2
 }

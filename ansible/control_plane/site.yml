@@ -1,0 +1,5 @@
+---
+
+- hosts: localhost
+  tasks:
+    - include: 0_keepalived.yaml

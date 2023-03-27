@@ -2,6 +2,11 @@ output "common_network_internal" {
     value = openstack_networking_network_v2.internal
 }
 
+output "common_network_internal_subnet" {
+    value = openstack_networking_subnet_v2.internal_vxlan
+}
+
+
 output "common_security_group" {
     value = openstack_networking_secgroup_v2.common_internal
 }
