@@ -4,3 +4,7 @@
   roles:
     # - name: kyl191.openvpn
     #   become: True
+
+
+# install build essential, python3-dev, python3-venv
+# install pip in venv
