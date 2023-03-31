@@ -2,20 +2,19 @@
 resource "openstack_networking_port_v2" "control" {
 
   count = var.k8s_controller_count
-
   name = "port-k8s-cp-controller-${count.index}"
-
   network_id     = data.tfe_outputs.sanbi.values.common_network_internal.id
   admin_state_up = "true"
+  port_security_enabled = false
 
   fixed_ip {
     subnet_id = data.tfe_outputs.sanbi.values.common_network_internal_subnet.id
     ip_address = "172.16.0.${10 + count.index}"
   }
 
-  allowed_address_pairs {
-    ip_address = "172.16.0.9"
-  }
+  # allowed_address_pairs {
+  #   ip_address = "172.16.0.9"
+  # }
   
 }
 

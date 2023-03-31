@@ -1,5 +1,30 @@
 ---
 
 - hosts: localhost
+  become: False
   tasks:
-    - include: 0_keepalived.yaml
+
+    - name: Download Kubespray release
+      ansible.builtin.unarchive:
+        src: "{{ kubespray_release_url }}"
+        dest: "{{ playbook_dir }}/kubespray"
+        remote_src: True
+
+    - name: Prepare Kubespray sample inventory for consumption
+      ansible.builtin.copy: 
+        src: "{{ playbook_dir }}/kubespray/inventory/sample/"
+        dest: "{{ playbook_dir }}/kubespray/inventory/{{ kubespray_inventory_name }}"
+
+    - name: Copy dynamic inventory to Kubespray inventory
+      ansible.builtin.copy:
+        src: "{{ dynamic_inventory_file_path }}"
+        dest: "{{ playbook_dir }}/kubespray/inventory/{{ kubespray_inventory_name }}/openstack.yml"
+
+    - name: Copy files to Kubespray directory
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/files/kubespray_group_vars/{{ item }}"
+        dest: "{{ playbook_dir }}/kubespray/inventory/{{ kubespray_inventory_name }}/group_vars/{{ item }}"
+      loop:
+        - "all/all.yml"
+        - "all/openstack.yml"
+        - "k8s_cluster/k8s-cluster.yml"

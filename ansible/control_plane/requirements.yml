@@ -1,11 +1,7 @@
 ---
-
-roles:
-  - name: evrardjp.keepalived
+#roles:
 
 collections:
-  - name: openstack.cloud
-    version: '2.0.0'
 
   - name: https://opendev.org/openstack/ansible-collections-openstack
     type: git

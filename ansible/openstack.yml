@@ -5,11 +5,14 @@ fail_on_errors: yes
 all_projects: no
 cache: no
 keyed_groups:
-  - key: openstack.metadata.ansible_group_name.split(',')
+  - key: openstack.tags
     prefix: ''
     separator: ''
-# compose:
-#   etcd_member_name: openstack.metadata.ansible_etcd_member_name
-#   ansible_host: openstack.accessIPv4
-# groups:
-#   k8s_cluster: "'kube' in openstack.metadata.ansible_group_name"
+compose:
+  etcd_member_name: openstack.tags | select('search', '^cp-k8s-controller-etcd.*') | join('')
+#   ansible_host: openstack.addresses['(tf) Internal vxlan'][0].addr | default(ansible_host)
+#   #ansible_ssh_host: 
+groups:
+  kube_control_plane: "'cp-k8s-controller' in openstack.tags"
+  etcd: "'cp-k8s-controller' in openstack.tags"
+  k8s_cluster: "'control-plane-k8s' in openstack.tags"
