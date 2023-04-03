@@ -37,17 +37,36 @@ resource "null_resource" "remote_checker_workers" {
   ]
 }
 
+data "template_file" "sentry_script" {
+  template = "${file("${path.module}/remote-exec.sh")}"
+  vars = {
+    infra_private_key = var.infra_private_key
+  }
+}
+
 resource "null_resource" "ansible_runner" {
 
-  provisioner "file" {
-    connection {
+  connection {
       type = "ssh"
       host = data.tfe_outputs.sanbi.values.sentry_vm_public_ip
       user = "ubuntu"
       private_key = var.infra_private_key
-    }
-    source = "${path.module}/../../ansible/control_plane"
-    destination = "~/ansible/control_plane"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "mkdir -p ~/ansible",
+      "mkdir -p ~/venvs"
+    ]
+  }
+
+  provisioner "file" {
+    source = "${path.module}/../../ansible"
+    destination = "/home/ubuntu/"
+  }
+
+  provisioner "remote-exec" {
+    script = data.template_file.sentry_script.rendered
   }
 
   depends_on = [
