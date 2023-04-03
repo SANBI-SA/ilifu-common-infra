@@ -2,6 +2,7 @@
 
 - hosts: localhost
   become: False
+  connection: local
   tasks:
 
     - name: Download Kubespray release

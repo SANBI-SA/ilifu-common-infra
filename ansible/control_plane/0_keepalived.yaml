@@ -1,6 +1,0 @@
----
-
-- hosts: cp-controllers
-  order: sorted
-  roles:
-    - evrardjp.keepalived

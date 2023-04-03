@@ -1,3 +1,7 @@
+output "sentry_vm_public_ip" {
+    value = openstack_networking_floatingip_v2.sentry.address
+}
+
 output "common_network_internal" {
     value = openstack_networking_network_v2.internal
 }

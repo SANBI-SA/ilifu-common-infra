@@ -31,3 +31,7 @@ variable "k8s_worker_count" {
     type = number
     default = 2
 }
+
+variable "infra_private_key" {
+    type = string
+}

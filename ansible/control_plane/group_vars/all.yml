@@ -1,0 +1,7 @@
+---
+
+# Kubespray variables
+kubespray_inventory_name: "aga"
+kubespray_release: "2.21.0"
+kubespray_release_url: "https://github.com/kubernetes-sigs/kubespray/archive/refs/tags/v{{ kubespray_release }}.tar.gz"
+dynamic_inventory_file_path: "{{ playbook_dir }}/inventory-openstack.yml"
