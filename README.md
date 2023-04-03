@@ -1,20 +1,16 @@
-# Main resources:
+# Project setup
 
-## "SANBI" project setup on ILIFU
-### Terraform (ilifu_sanbi_project)
-- [X] Create common keypair
-- [X] Create common security group
-  - [X] Create rules for common security group
-- [X] Create sentry security group
-  - [X] Create rules for sentry security group
-- [X] Create common vxlan network and subnet
-- [X] Create router for vxlan
-- [X] Create instance for sentry and assign floating IP
-  - [X] Install github runner via terraform
-  - *NOTE!* This actually also provisions the github runner via remote-exec
-  - [ ] Install Docker on the VM for the github runner
-- [X] Create DNS A record in sanbi.ac.za for sentry-ilifu.sanbi.ac.za
+## Terraform
 
-### Ansible (ilifu_sanbi_project)
-- [ ] Proviisions OpenVPN
-- [ ] Provisions Gitlab runner
+1. Create a Terraform cloud account at https://app.terraform.io.
+2. Create or rename the default workspace to "
+
+## Git
+
+1. Fork this GitHub repository
+2. Clone the forked repository to a local machine
+3. Download 
+
+    1. Set up environment variables (secrets and variables -> actions)
+
+2. set up terraform cloud repo
